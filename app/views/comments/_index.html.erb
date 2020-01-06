@@ -1,0 +1,14 @@
+<div>
+<%if comments.length > 1 %>
+    <h4>Comments</h4>
+    <% comments.each do |comment|%>
+        <% if comment.id != nil %>
+            <div>
+                <p class="p"> <%= comment.message%> </td>
+                <p class="p"><%= time_ago_in_words comment.created_at%> ago</td>
+                <%= link_to 'destroy', post_comment_path(comment.post,comment), method: :delete, data:{ confirm: 'Are you sure?'}%>
+            </div>
+        <% end %>
+    <%end%>
+<%end%>
+</div>

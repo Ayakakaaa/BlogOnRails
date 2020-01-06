@@ -1,0 +1,26 @@
+
+<%= form_with(model: @post, local: true, class:"grid-container layout2") do |form|%>
+
+<div class ="title">
+    <%= form.label :title%><br>
+    <%= form.text_field :title, class:"layout2"%>
+</div>
+
+<div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, cols: 50, rows:5, class:"layout2"%>
+    <br>
+</div>
+
+<% if @post.id 
+        type = "Edit" 
+    else 
+        type = "New" 
+end %>
+
+<%= form.submit "#{type} post", :class => "button2"%>
+
+<% end %>
+
+<%= flash[:error]%>
+

@@ -1,0 +1,8 @@
+<article class="grid-container layout">
+<% @posts.each do |post|%>
+<div class="grid-item">
+    <h4><%= link_to(post.title,post_path(post.id)) %></h4>
+    <p class="row"><%= post.body %></p>
+</div>
+<%end%>
+</article>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlogOnRails</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <link rel="stylesheet" href="/assets/stylesheets/main.scss">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <h3 style="color:blue">Blog On Rails</h3>
+
+        <ul class="nav-container">
+            <li>
+              <a style="margin-right:1em;" href="/posts">Home</a>
+            </li>
+            <li>
+              <a href="/posts/new">New Post</a>
+            </li>
+        </ul>
+    </nav>
+    <% flash[:notice] || flash[:alert]%>
+  <%= yield %>
+  </body>
+</html>
