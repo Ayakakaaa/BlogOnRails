@@ -21,5 +21,12 @@ Rails.application.routes.draw do
     #delete
     delete('/posts/:post_id/comments/:id', to:'comments#destroy', as:'post_comment')
 
+    resources :users, only: [:new, :create, :update, :edit]
+    get('/user/:id/edit_password', to:'users#edit_password', as:'edit_user_password')
+    patch('/user/:id/edit_password', to:'users#update_password', as:'update_user_password')
+
+    resource :sessions, only: [:create, :destroy]
+    get('/session/new', to:'sessions#new', as:'new_session')
+
 end
 
