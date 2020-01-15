@@ -1,16 +1,15 @@
 <div class="grid-container container layout2">
-<%= flash[:notice]%>
-<%= flash[:error]%>
     <div class="box1">
         <h2><%= @post.title %></h2>
         <p><%= @post.body %></p>
-        <p class="p">Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+        <p class="p">Posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %></p>
         <p class="p">Updated <%= time_ago_in_words(@post.updated_at) %> ago</p>
     </div>
     <div class = "box2">
-        <%= link_to 'Edit', edit_post_path(@post.id),class: "button"%>
-        <%=link_to "Delete",post_path, method: :delete, data:{confirm:'Are you sure?' },class: "button"%>
-
+        <% if can? :crud, @post%>
+            <%= link_to 'Edit', edit_post_path(@post.id),class: "button"%>
+            <%=link_to "Delete",post_path, method: :delete, data:{confirm:'Are you sure?' },class: "button"%>
+        <% end %>
     </div>
 
     <%= render 'comments/new', post: @post, comment: @comment%>

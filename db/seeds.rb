@@ -15,7 +15,8 @@ PASSWORD = "supersecret"
 super_user = User.create(
     name: "kanojo",
     email: "kanojo@superuser.co.jp",
-    password: PASSWORD
+    password: PASSWORD,
+    is_admin: true
 )
 
 100.times do

@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'cancancan'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 

@@ -33,7 +33,13 @@
             </li>
         </ul>
     </nav>
-    <%= flash[:notice] || flash[:alert]%>
+       <p>
+    <% flash.each do |type, message| %>
+      <div class="flash flash-<%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
+    </p>
   <%= yield %>
   </body>
 </html>

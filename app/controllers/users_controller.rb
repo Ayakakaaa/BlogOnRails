@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
     before_action :find_user, only: [:edit, :update, :destroy, :edit_password, :update_password]
+    before_action :authorize!, only: [:edit,:update,:destroy]
 
     def new
         @user = User.new
@@ -71,6 +71,12 @@ class UsersController < ApplicationController
 
     def edit_params
         params.require(:user).permit(:name, :email)
+    end
+
+    def authorize! 
+        unless can?(:crud, @user)
+            redirect_to root_path, alert: 'Not Authorized' 
+        end
     end
 
 end
