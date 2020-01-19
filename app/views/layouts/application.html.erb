@@ -8,28 +8,29 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'main', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <h3 style="color:blue">Blog On Rails</h3>
-
-      <% if user_signed_in? %>
-          Hello!
-          <%= link_to current_user.name, edit_user_path(current_user.id) %>
-          <%= link_to "Logout", sessions_path, method: :delete,
-          data: {confirm: " Are you sure you want to log out?"}%>
-      <% else %>
-          <%= link_to "Login", new_session_path%>
-          <%= link_to "Sign Up", new_user_path%>
-      <% end %>
-
+    <nav>
+        <h3>Blog On Rails</h3>
+        <div calss= "nav-container">
+          <% if user_signed_in? %>
+              <span class="p nav-a">Hello!</span>
+              <strong><%= link_to current_user.name, edit_user_path(current_user.id), class: "nav-a nav-b" %></strong>
+              <%= link_to "Logout", sessions_path, method: :delete,
+              data: {confirm: " Are you sure you want to log out?"}, class: "nav-a"%>
+          <% else %>
+              <%= link_to "Login", new_session_path, class: "nav-a"%>
+              <%= link_to "Sign Up", new_user_path, class: "nav-a"%>
+          <% end %>
+        </div>
         <ul class="nav-container">
-            <li>
-              <a style="margin-right:1em;" href="/posts">Home</a>
+          <li>
+              <a class="nav-a" href = "/posts">Home</a>
             </li>
             <li>
-              <a href="/posts/new">New Post</a>
+              <a href = "/posts/new">New Post</a>
             </li>
         </ul>
     </nav>
